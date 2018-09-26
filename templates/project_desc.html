@@ -4,9 +4,17 @@
     <title>Project Info</title>
 </head>
 <body>
-  <p>Project: {{ project_info[0] }} </p>
+  <h1>Project: {{ project_info[0] }} </h1>
   <p>Description: {{ project_info[1] }} </p>
   <p>Max grade: {{ project_info[2] }}</p>
+
+  <ul>
+      {% for student in students_grade_list %}
+      <li>Student Github: 
+        <a href="/student?github={{ student[0] }}">{{ student[0] }}</a>
+        , Grade = {{ student[1] }}</li>
+      {% endfor %}
+  </ul>
 
 </body>
 </html>

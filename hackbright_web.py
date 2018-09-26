@@ -6,6 +6,14 @@ import hackbright
 
 app = Flask(__name__)
 
+@app.route("/homepage")
+def display_class_info():
+    """show students and projects about class"""
+    student_list = hackbright.get_students_list()   
+
+    project_list = hackbright.get_projects_list()
+    return render_template("homepage.html",student_list = student_list,
+        project_list = project_list)
 
 @app.route("/student", methods=["GET"])
 def get_student():
@@ -69,8 +77,11 @@ def get_project_info():
 
     project_info = hackbright.get_project_by_title(title)
 
+    students_grade_list = hackbright.get_grades_by_title(title)
+
     return render_template("project_desc.html", 
-                            project_info=project_info)
+                            project_info=project_info,
+                            students_grade_list=students_grade_list)
 
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
