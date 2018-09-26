@@ -1,9 +1,8 @@
-<!doctype html>
-<html>
-<head>
-    <title>Project Info</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Project Info{% endblock %}
+
+{% block content %}
   <h1>Project: {{ project_info[0] }} </h1>
   <p>Description: {{ project_info[1] }} </p>
   <p>Max grade: {{ project_info[2] }}</p>
@@ -16,5 +15,4 @@
       {% endfor %}
   </ul>
 
-</body>
-</html>
+{% endblock %}
